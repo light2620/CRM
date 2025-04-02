@@ -1,10 +1,8 @@
 import mongoose from "mongoose"
 
 const CustomerSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    phone: { type: String },
     type: { type: String, enum: ['Individual', 'Company'], required: true },
+    individual : {type: mongoose.Schema.Types.ObjectId, ref  : "individual"},
     company: { type: mongoose.Schema.Types.ObjectId, ref: 'company' }
 });
 
