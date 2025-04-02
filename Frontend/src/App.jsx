@@ -1,10 +1,20 @@
 import { useState } from "react";
 import "./App.css";
+import { axiosInstance } from "./Api/axiosInstance";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
 
+  async function check (){
+    try{
+        const response = await axiosInstance.get();
+        console.log(response)
+    }catch(err){
+      console.log(err)
+    }
+   }
   function switchMode() {
+    check();
     setIsDark((prev) => {
       const newMode = !prev;
       const html = document.documentElement;
