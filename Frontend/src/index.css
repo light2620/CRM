@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+/* 📌 Define Theme Colors */
+@theme {
+  /* 🌞 Light Mode */
+  --color-primary: #3B82F6; /* Blue */
+  --color-secondary: #9333EA; /* Purple */
+  --color-background: #ffffff; /* White */
+  --color-foreground: #F3F4F6; /* Light Gray */
+  --color-text: #1F2937; /* Dark Gray for readability */
+  --color-muted: #6B7280; /* Muted gray */
+  --color-accent: #F59E0B; /* Amber */
+  --color-error: #EF4444; /* Red */
+
+  /* 🌙 Dark Mode */
+  --color-primary-dark: #2563EB; /* Darker Blue */
+  --color-secondary-dark: #7C3AED; /* Darker Purple */
+  --color-background-dark: #111827; /* Dark Gray */
+  --color-foreground-dark: #1F2937; /* Slightly lighter dark */
+  --color-text-dark: #E5E7EB; /* Light Gray */
+  --color-muted-dark: #9CA3AF; /* Muted gray */
+  --color-accent-dark: #D97706; /* Dark Amber */
+  --color-error-dark: #DC2626; /* Dark Red */
+}
+
+
+
+
+/* 📌 Global Typography & Styling */
+@layer base {
+  html {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  h1 {
+    font-size: 2rem; /* text-3xl */
+  }
+
+  h2 {
+    font-size: 1.75rem; /* text-2xl */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* text-xl */
+  }
+
+  h4 {
+    font-size: 1.25rem; /* text-lg */
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+}
