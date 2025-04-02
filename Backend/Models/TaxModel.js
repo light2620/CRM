@@ -7,7 +7,7 @@ const TaxSchema = new mongoose.Schema({
 });
 
 
-const TaxModel = mongoose.Model("tax",TaxSchema);
+const TaxModel = mongoose.model("tax",TaxSchema);
 
 
 export {TaxModel}
