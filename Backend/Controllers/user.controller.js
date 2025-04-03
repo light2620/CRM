@@ -165,4 +165,11 @@ const loginController = async (req, res) => {
     }
 };
 
-export { registerController, loginController, verifyEmailController };
+const checkController = async(req,res) =>{
+    try{
+        return res.send("working fine");
+    }catch(err){
+        console.log(Err)
+    }
+}
+export { registerController, loginController, verifyEmailController,checkController };
