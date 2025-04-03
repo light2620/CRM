@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import cors from "cors"
 import cookieParser from "cookie-parser"
-
+import { userRouter } from "./Routes/user.routes.js";
 dotenv.config();
 const app = express();
 app.use(cors());
@@ -17,6 +17,7 @@ app.get("/" ,(request,response)=>{
     })
 })
 
+app.use("/auth",userRouter);
 
 
 
