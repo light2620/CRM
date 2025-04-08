@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer"
-import error from "./error.js";
+import error from "./handleError.js";
 import dotenv from "dotenv"
 dotenv.config();
 

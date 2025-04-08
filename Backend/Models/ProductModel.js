@@ -5,6 +5,7 @@ const ProductSchema = new mongoose.Schema({
     description: { type: String },
     price: { type: Number, required: true },
     category: { type: mongoose.Schema.Types.ObjectId, ref: 'productCategory' },
+    currency : {type : mongoose.Schema.Types.ObjectId,ref : "currency"},
     tax: { type: mongoose.Schema.Types.ObjectId, ref: 'tax' }
 });
 

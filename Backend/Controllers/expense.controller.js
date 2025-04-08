@@ -1,5 +1,6 @@
 import { ExpenseCategorModel } from "../Models/ExpenceCategoryModel.js";
-import error from "../utils/error.js";
+import { ExpenseModel } from "../Models/ExpenseModel.js";
+import handleError from "../utils/handleError.js";
 
 
 const addExpenseCategorController = async (req,res) => {
@@ -30,20 +31,36 @@ const addExpenseCategorController = async (req,res) => {
 
 
        }catch(err){
-        error(err,"addExpenseCategoryController",res);
+        handleError(err,"addExpenseCategoryController",res);
        }
 }
 
 const addExpenseController = async(req,res) => {
     try{
         const {description,amount,category,date,currency} = req.body;
-        if(!description || !amount || !category || !date || !currency){
-            return res.status(400)
+        if( !amount || !category || !date || !currency){
+            return res.status(400).json({
+                success : false,
+                message : "mandatory data is not provided"
+            })
         }
+        const expense = {
+            description,
+            amount,
+            currency,
+            category,
+            date
+        }
+        const newExpense = new ExpenseModel(expense);
+        await newExpense.save();
+        return res.status(200).json({
+            success : true,
+            message :  "Expense Added"
+        })
     }catch(err){
-        error(err,"addExpenseController",res);
+        handleError(err,"addExpenseController",res);
     }
 }
 
 
-export {addExpenseCategorController}
+export {addExpenseCategorController,addExpenseController}

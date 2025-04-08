@@ -1,4 +1,4 @@
-import error from "../utils/error.js"
+import error from "../utils/handleError.js"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
 dotenv.config();

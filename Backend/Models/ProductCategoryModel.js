@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 const ProductCategorySchema = new mongoose.Schema({
     name: { type: String, required: true },
-    description: { type: String }
+    color : {type : String, required : true},
+    description: { type: String ,required: true},
+    enable : {type : Boolean,required: true, default : false}
 });
 
 

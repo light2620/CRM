@@ -1,5 +1,5 @@
 import { UserModel } from "../Models/UserModel.js";
-import error from "../utils/error.js";
+import handleError from "../utils/handleError.js";
 import bcrypt from "bcrypt";
 import verificationEmailTemplate from "../utils/verificationEmailTemplate.js";
 import { sendEmail } from "../utils/sendEmail.js";
@@ -80,7 +80,7 @@ const registerController = async (req, res) => {
             message: "Verify your account",
         });
     } catch (err) {
-        error(err, "Register Controller", res);
+        handleError(err, "Register Controller", res);
     }
 };
 
@@ -113,7 +113,7 @@ const verifyEmailController = async (req, res) => {
             message: "Verification successful",
         });
     } catch (err) {
-        error(err, "Verify Email Controller", res);
+        handleError(err, "Verify Email Controller", res);
     }
 };
 
@@ -161,7 +161,7 @@ const loginController = async (req, res) => {
             token,
         });
     } catch (err) {
-        error(err, "Login Controller", res);
+        handleError(err, "Login Controller", res);
     }
 };
 
