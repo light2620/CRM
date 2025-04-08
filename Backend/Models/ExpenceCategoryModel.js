@@ -6,6 +6,6 @@ const ExpenseCategorySchema = new mongoose.Schema({
 });
 
 
-const ExpenseCategorModel = mongoose.model("expenseCategor",ExpenseCategorySchema);
+const ExpenseCategorModel = mongoose.model("expenseCategory",ExpenseCategorySchema);
 
 export {ExpenseCategorModel}
