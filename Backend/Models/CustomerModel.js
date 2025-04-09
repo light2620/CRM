@@ -7,7 +7,7 @@ const CustomerSchema = new mongoose.Schema({
 });
 
 
-const CustomerModel = mongoose.model("company",CustomerSchema);
+const CustomerModel = mongoose.model("customer",CustomerSchema);
 
 
 export {CustomerModel}

@@ -1,5 +1,5 @@
-import { ProductCategoryModel } from "../Models/ProductCategoryModel"
-import handleError from "../utils/handleError"
+import { ProductCategoryModel } from "../Models/ProductCategoryModel.js"
+import handleError from "../utils/handleError.js"
 
 
 

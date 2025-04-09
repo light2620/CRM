@@ -1,7 +1,7 @@
 import { CustomerModel } from "../Models/CustomerModel.js";
 import { IndividualModel } from "../Models/IndividualModel.js";
 import { CompanyModel } from "../Models/CompnayModel.js";
-import handleError from "../utils/error.js";
+import handleError from "../utils/handleError.js";
 
 export const createCompanyController = async(req,res) => {
    try{

@@ -1,5 +1,5 @@
-import { InvoiceModel } from "../Models/InvoiceModel";
-import handleError from "../utils/handleError"
+import { InvoiceModel } from "../Models/InvoiceModel.js";
+import handleError from "../utils/handleError.js"
 
 
 export const addInvoiceController = async(req,res) => {

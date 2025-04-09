@@ -1,7 +1,7 @@
-import { CurrencyModel } from "../Models/CurrencyModel"
-import { PaymentModeModel } from "../Models/PaymentModeModel"
-import { TaxModel } from "../Models/TaxModel"
-import handleError from "../utils/handleError"
+import { CurrencyModel } from "../Models/CurrencyModel.js"
+import { PaymentModeModel } from "../Models/PaymentModeModel.js"
+import { TaxModel } from "../Models/TaxModel.js"
+import handleError from "../utils/handleError.js"
 
 
 export const addTaxController = async(req,res) => {
