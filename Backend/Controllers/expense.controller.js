@@ -3,7 +3,7 @@ import { ExpenseModel } from "../Models/ExpenseModel.js";
 import handleError from "../utils/handleError.js";
 
 
-const addExpenseCategorController = async (req,res) => {
+const addExpenseCategoryController = async (req,res) => {
        try{
            const {name,description} = req.body;
 
@@ -63,4 +63,4 @@ const addExpenseController = async(req,res) => {
 }
 
 
-export {addExpenseCategorController,addExpenseController}
+export {addExpenseCategoryController,addExpenseController}

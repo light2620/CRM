@@ -22,7 +22,7 @@ app.get("/" ,(request,response)=>{
     })
 })
 
-app.use("/auth",userRouter);
+app.use("/api/auth",userRouter);
 app.use("/api/expense",expenseRouter);
 app.use("/api/product",productRouter)
 app.use("/api/customer",customerRoutes);
