@@ -24,7 +24,11 @@
   --color-accent-dark: #D97706; /* Dark Amber */
   --color-error-dark: #DC2626; /* Dark Red */
 }
-
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
 
 
@@ -37,10 +41,7 @@
     transition: background-color 0.3s, color 0.3s;
   }
 
-  h1, h2, h3, h4 {
-    font-weight: 700;
-    color: var(--color-primary);
-  }
+
 
   h1 {
     font-size: 2rem; /* text-3xl */
@@ -60,7 +61,7 @@
 
   p {
     font-size: 1rem;
-    color: var(--color-muted);
+  
     line-height: 1.6;
   }
 
