@@ -8,6 +8,7 @@ const userRouter = Router();
 userRouter.post("/login",loginController)
 userRouter.post("/register",registerController)
 userRouter.post("/verify-email",verifyEmailController)
+userRouter.post("/is-auth",protectedRoute);
 
 
 

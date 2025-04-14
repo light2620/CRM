@@ -1,10 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { useUser } from '../Context/UserContext';
 const ProtectedRoute = () => {
-    const isAuthenticated = false;
+    const {isAuthenticate} = useUser();
 
-    if (!isAuthenticated) {
+    if (!isAuthenticate) {
       return <Navigate to="/login"  replace/>;
     }
   

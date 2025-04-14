@@ -8,7 +8,7 @@ const AuthScreen = () => {
       {/* Left Section */}
       <div className='hidden lg:flex w-1/2 flex-col items-center bg-foreground text-white px-8 py-12'>
         {/* Logo */}
-        <div className='w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80 mb-8'>
+        <div className='w-40 sm:w-52 md:w-64 lg:w-72 xl:w-80'>
           <img src={logo} alt="logo" className='w-full h-full object-contain' />
         </div>
 
@@ -39,7 +39,7 @@ const AuthScreen = () => {
       </div>
 
       {/* Right Section */}
-      <div className='w-full lg:w-1/2 flex items-center justify-center px-8'>
+      <div className='w-full lg:w-1/2 flex items-center justify-center px-8 '>
         <Outlet />
       </div>
     </div>

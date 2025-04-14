@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import React from "react";
+import EmailVerification from "../Pages/EmailVerification.jsx";
 
 // Lazy load pages
 const Home = React.lazy(() => import("../Pages/Dashboard"));
@@ -8,8 +9,8 @@ const AuthScreen = React.lazy(() => import("../Layouts/AuthScreen"));
 const Register = React.lazy(() => import("../Pages/Register"));
 const PublicRoute = React.lazy(() => import("./PublicRoute"));
 const ProtectedRoute = React.lazy(() => import("./ProtectedRoute"));
-const MainLayout = React.lazy(() => import("../Layouts/MainLayout"));
 const Dashboard = React.lazy(() => import("../Pages/Dashboard"));
+const App = React.lazy(() => import("../App.jsx"))
 
 const route = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const route = createBrowserRouter([
     element: <ProtectedRoute />,
     children: [
       {
-        element: <MainLayout />,
+        element: <App />,
         children: [
           { path: "/dashboard", element: <Dashboard /> },
           { path: "/", element: <Dashboard /> },
@@ -36,6 +37,10 @@ const route = createBrowserRouter([
       },
     ],
   },
+  {
+    path : "/verify-email",
+    element : <EmailVerification />
+  }
 ]);
 
 export { route };

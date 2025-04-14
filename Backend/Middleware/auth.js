@@ -1,11 +1,12 @@
-import error from "../utils/handleError.js"
+
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
+import handleError from "../utils/handleError.js";
 dotenv.config();
 const protectedRoute = async(req,res,next) => {
     try{
          const token = req.header("Authorization");
-
+          console.log(token);
          if(!token){
             return res.status(401).json({
                 success : false,
@@ -24,7 +25,7 @@ const protectedRoute = async(req,res,next) => {
          req.userId = decode.id;
          next();
     }catch(err){
-        error(err,"protected route",res)
+        handleError(err,"protected route",res)
     }
 }
 

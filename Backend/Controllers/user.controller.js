@@ -92,7 +92,7 @@ const registerController = async (req, res) => {
 const verifyEmailController = async (req, res) => {
     try {
         const { code } = req.body;
-
+        
         // Find user by the verification code (user ID)
         const user = await UserModel.findById(code);
         if (!user) {
@@ -101,7 +101,14 @@ const verifyEmailController = async (req, res) => {
                 message: "Invalid user",
             });
         }
+        if(user.isVerified){
+            return res.status(400).json({
+                success : false,
+                message : "user is already verified",
+                alReadyVerified : true
 
+            })
+        }
         // Update user to mark email as verified
         await UserModel.findByIdAndUpdate(
             { _id: code },
@@ -152,9 +159,24 @@ const loginController = async (req, res) => {
             });
         }
 
-        // Generate JWT token for authentication
+        
+        if(!user.isVerified){
+            const verifyEmailUrl = `${process.env.FRONTEND_URL}/verify-email?code=${user._id}`;
+            const mailOptions = {
+                from: "shivamnegi896@gmail.com",
+                to: email,
+                subject: "Click the button to verify your account",
+                html: verificationEmailTemplate(verifyEmailUrl),
+               
+            };
+            sendEmail(mailOptions, res);
+            return res.status(200).json({
+                success: true,
+                message: "Verify your account",
+            });
+        }
         const token = generateToken(user._id);
-
+      // Generate JWT token for authentication
         return res.status(200).json({
             success: true,
             message: "Login successful",

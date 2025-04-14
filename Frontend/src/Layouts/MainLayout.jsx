@@ -6,9 +6,9 @@ import { Spin } from 'antd'
 const MainLayout = () => {
   return (
     <Suspense fallback={<Spinner />}>
-    <div>
-      <Outlet />
-    </div>
+      <div>
+         <Outlet />
+      </div>
     </Suspense>
   )
 }
