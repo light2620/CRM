@@ -15,7 +15,7 @@ const sendEmail = async(mailOptions,res) => {
          
         await transporter.sendMail(mailOptions);
     }catch(err){
-           error(err,"Send Email",res)
+           handlError(err,"Send Email",res)
     }
 
 }

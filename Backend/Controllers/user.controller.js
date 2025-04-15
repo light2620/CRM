@@ -5,6 +5,7 @@ import verificationEmailTemplate from "../utils/verificationEmailTemplate.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import dotenv from "dotenv";
 import generateToken from "../utils/generateToken.js";
+import jwt from 'jsonwebtoken'
 dotenv.config();
 
 /**
@@ -187,4 +188,32 @@ const loginController = async (req, res) => {
     }
 };
 
-export { registerController, loginController, verifyEmailController};
+
+const authenticationController = async(req,res) => {
+    try{
+        const token  = req.header("Authorization");
+
+        if(!token){
+            return res.status(401).json({
+                success : false,
+                message : "Access denied. No token provided."
+            })
+        }
+
+        const decode = jwt.verify(token,process.env.TOKEN_SECRET_KEY)
+        if(!decode){
+            return res.status(401).json({
+                success: false,
+                message: "Invalid token. Authentication failed.",
+            });
+         }
+         return res.status(201).json({
+            success : true,
+            message : "authorizeduser"
+         })
+    }catch(err){
+        handleError(err,"authenticationController",res)
+    }
+}
+
+export { registerController, loginController, verifyEmailController ,authenticationController};

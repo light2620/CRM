@@ -1,17 +1,20 @@
 import { useState } from "react";
 import "./App.css";
 import MainLayout from "../src/Layouts/MainLayout.jsx"
-import AuthScreen from "./Layouts/AuthScreen.jsx";
+import { UserProvider } from "./Context/UserContext.jsx";
+import { ApiProvider } from "./Context/ApiContext.jsx";
+import { Outlet } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 function App() {
  
 
   return (
-    <>
-    <div>
-       <AuthScreen />
-    </div>
-    
-    </>
+    <ApiProvider>
+    <UserProvider>
+      <Outlet/>
+      <Toaster />
+    </UserProvider>
+    </ApiProvider>
   );
 }
 

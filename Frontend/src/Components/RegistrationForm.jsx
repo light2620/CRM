@@ -7,6 +7,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { useUser } from '../Context/UserContext';
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
+import toast from 'react-hot-toast';
 const RegistrationForm = () => {
     const [userData, setUserData] = useState({
         name: "",
@@ -32,26 +33,48 @@ const RegistrationForm = () => {
     }
     async function handleSubmit(e) {
         e.preventDefault();
-        let isValid = true;
-
+        console.log(userData);
+    
+        let hasError = false;
+    
         if (userData.name.trim() === "") {
             setNameError(true);
-            isValid = false;
+            hasError = true;
+        } else {
+            setNameError(false);
         }
+    
         if (userData.email.trim() === "") {
             setEmailError(true);
-            isValid = false;
+            hasError = true;
+        } else {
+            setEmailError(false);
         }
-
+    
         if (userData.password.trim() === "") {
             setPasswordError(true);
-            isValid = false;
+            hasError = true;
+        } else {
+            setPasswordError(false);
         }
-        if (!isValid) return;
-
+    
+        if (hasError) return;
+    
         const response = await register(userData);
-        console.log(response)
+        console.log(response);
+        if (response.data.success) {
+            toast.success(`Verification link sent to ${userData.email}`);
+            setUserData({
+                name: "",
+                email: "",
+                password: ""
+            });
+            setNameError(false);
+            setEmailError(false);
+            setPasswordError(false); 
+        }
     }
+    
 
     return (
         <div className="flex flex-col max-w-[400px] w-[400px]  p-8 gap-8">
@@ -65,6 +88,7 @@ const RegistrationForm = () => {
                             id="name"
                             ref={nameRef}
                             onChange={handleChange}
+                            value={userData.name}
                             name="name"
                             className={`border-[2px] rounded-lg py-1 px-8 w-full border-gray-200 focus-within:outline-none ${nameError ? "focus-within:border-red-500 border-red-500 " : "focus-within:border-primary hover:border-primary"} `}
                             placeholder='Name'
@@ -83,6 +107,7 @@ const RegistrationForm = () => {
                         <input
                             id="email"
                             ref={emailRef}
+                            value={userData.email}
                             onChange={handleChange}
                             name="email"
                             className={`border-[2px] rounded-lg py-1 px-8 w-full border-gray-200 focus-within:outline-none ${emailError ? "focus-within:border-red-500 border-red-500" : "focus-within:border-primary hover:border-primary"} `}
@@ -104,6 +129,7 @@ const RegistrationForm = () => {
                             ref={passwordRef}
                             onChange={handleChange}
                             name="password"
+                            value={userData.password}
                             className={`border-[2px] rounded-lg py-1 px-8 border-gray-200 focus-within:outline-none w-full ${passwordError ? "focus-within:border-red-500 border-red-500" : "focus-within:border-primary hover:border-primary"}`}
                             placeholder='Password'
                             type="password" />

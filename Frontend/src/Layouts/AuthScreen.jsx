@@ -1,9 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import logo from "../assets/logo.png";
-
+import { UserProvider } from '../Context/UserContext';
 const AuthScreen = () => {
   return (
+    
+
     <div className='flex min-h-screen'>
       {/* Left Section */}
       <div className='hidden lg:flex w-1/2 flex-col items-center bg-foreground text-white px-8 py-12'>
@@ -43,6 +45,8 @@ const AuthScreen = () => {
         <Outlet />
       </div>
     </div>
+
+
   );
 };
 
