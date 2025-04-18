@@ -4,7 +4,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 const Dashboard = () => {
   console.log("inside dashboard")
   return (
-    <div>
+    <div className="">
         Dashboard
     </div>
   )

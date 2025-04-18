@@ -7,6 +7,8 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const { post } = useApi();
   const [isAuthenticate, setIsAuthenticate] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [user,setUser] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
         async function checkAuthentication(){
@@ -14,13 +16,19 @@ export const UserProvider = ({ children }) => {
                 const response = await post("/auth/is-auth");
                 if(response.data.success){
                   setIsAuthenticate(true);
+                  setUser(response.data.userData)
                 }
+
              }catch(err){
                 setIsAuthenticate(false);
+             } finally{ 
+               setLoading(false);
              }
         } 
         checkAuthentication();
   },[])
+
+
   const login = async (credentials) => {
     try {
       console.log("login02")
@@ -51,7 +59,7 @@ export const UserProvider = ({ children }) => {
     }
   }
   return (
-    <UserContext.Provider value={{ isAuthenticate, login, logout, register}}>
+    <UserContext.Provider value={{ isAuthenticate, login, logout, register,user,loading}}>
       {children}
     </UserContext.Provider>
   );

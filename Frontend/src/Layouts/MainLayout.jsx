@@ -5,33 +5,37 @@ import { Spin } from 'antd'
 import { useIsMobile } from '../Hooks/useIsMobile'
 import logo from "../assets/logo.png";
 import SideBar from '../Components/SideBar'
+import Navbar from '../Components/Navbar'
+import MobileSidebar from '../Components/MobileSidebar'
 const MainLayout = () => {
   const isMoblie = useIsMobile();
   
   return (
-    <Suspense fallback={<Spinner />}>
+   
       <div className="flex bg-foreground dark:bg-foreground-dark">
-       <aside className="overflow-auto h-[100vh] w-[256px] max-w-[256px] min-w-[256px] py-4 pl-2 flex flex-col gap-5 ">
-          <div className="w-[67%] h-auto mt-2 ml-4  ">
-            <img src={logo} alt="" className='w-full h-full object-scale-down'/>
-          </div>
-          <SideBar/>
-       </aside>
+      
+      
+      {
+        !isMoblie &&  <aside className="overflow-auto h-[100vh] w-[256px] max-w-[256px] min-w-[256px] py-4 pl-2 flex flex-col gap-5 ">
+
+        <SideBar />
+      </aside>
+      }
  
 
 
-        <div className="flex flex-col w-full border-2 p-7">
+        <div className="flex flex-col w-full p-5 h-screen gap-2">
           <div className="">
-            Navbar
+            <Navbar />
           </div>
-          <div>
+          <di className="border-2 h-screen px-7">
              <Outlet />
-          </div>
+          </di>
         </div>
       </div>
 
 
-    </Suspense>
+   
   )
 }
 

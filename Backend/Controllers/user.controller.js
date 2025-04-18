@@ -207,9 +207,13 @@ const authenticationController = async(req,res) => {
                 message: "Invalid token. Authentication failed.",
             });
          }
+         const userId = decode.id;
+         const user = await UserModel.findById(userId).select('-password');
+         console.log(user);
          return res.status(201).json({
             success : true,
-            message : "authorizeduser"
+            message : "authorizeduser",
+            userData  : user
          })
     }catch(err){
         handleError(err,"authenticationController",res)
