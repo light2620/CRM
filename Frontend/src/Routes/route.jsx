@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import React from "react";
 import EmailVerification from "../Pages/EmailVerification.jsx";
 import MainLayout from "../Layouts/MainLayout.jsx";
+import CreateInvoice from "../Pages/CreateInvoice.jsx";
 
 // Lazy load pages
 const Home = React.lazy(() => import("../Pages/Dashboard"));
@@ -54,7 +55,8 @@ const route = createBrowserRouter([
               {path : "/product-category", element : <ProductCategory />},
               {path : "/invoice",element : <Invoice />},
               {path : "/people",element : <People />},
-              {path : "/payments",element : <Payments />}
+              {path : "/payments",element : <Payments />},
+              { path : "/invoice/create", element : <CreateInvoice/>}
             ],
           },
         ],
@@ -62,7 +64,7 @@ const route = createBrowserRouter([
       {
         path : "/verify-email",
         element : <EmailVerification />
-      }
+      },
     ]
   }
   

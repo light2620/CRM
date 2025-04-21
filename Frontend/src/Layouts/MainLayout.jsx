@@ -12,7 +12,7 @@ const MainLayout = () => {
   
   return (
    
-      <div className="flex w-full min-h-screen bg-foreground dark:bg-foreground-dark border-2">
+      <div className="flex w-full min-h-screen max-h-screen bg-foreground dark:bg-foreground-dark overflow-auto ">
       
       
       {
@@ -24,13 +24,13 @@ const MainLayout = () => {
  
 
 
-        <div className="flex flex-col w-full py-5 h-screen gap-6">
+        <div className="flex flex-col w-full py-5 h-screen gap-6    ">
           <div className="px-4 ">
             <Navbar />
           </div>
-          <di className=" h-screen px-4 lg:px-20">
+          <div className=" h-screen px-4 lg:px-20 ">
              <Outlet />
-          </di>
+          </div>
         </div>
       </div>
 

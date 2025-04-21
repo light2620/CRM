@@ -68,9 +68,9 @@ const SideBar = () => {
       ]
   return (
     <div className= "flex flex-col gap-2  h-full overflow-auto p-2">
-      <div className="w-[67%] h-auto mt-2 ml-4  ">
+      <Link to={"/"} className="w-[67%] h-auto mt-2 ml-4  ">
             <img src={logo} alt="" className='w-full h-full object-scale-down'/>
-      </div>
+      </Link>
       {sideBarOptions.map((item,index) => {
         return <Link to={item.path} key={index} className= "flex  gap-2 items-center hover:bg-gray-200 dark:hover:bg-sky-900 px-6 py-1 hover:rounded-2xl text-text dark:text-text-dark">
             <div className="text-xl ">
